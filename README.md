@@ -64,7 +64,8 @@ Then visit `http://127.0.0.1:8000/recommend/`
     - SQLite is used as the local db for simplicity. For actual use consider using another db like Postgress
 3. Embeddings are generated and stored at a serverless **Pinecone vector db**. This is done via the `upsert_to_pinecone`
    command.
-    - We use the free tier `ss` model for embeddings, it's trained on very large amounts of data to give rich contextual
+    - We use the free tier `llama-text-embed-v2` model for embeddings, it's trained on very large amounts of data to
+      give rich contextual
       embeddings
     - Embedding size: `1024`
     - We only upsert relevant data onto pinecone, the rest is kept is local db for fast retrival. This keeps the usage
