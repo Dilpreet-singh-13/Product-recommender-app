@@ -1,0 +1,17 @@
+<div id="products_list" class="my-1 p-4 mx-auto bg-green-50 rounded-xl max-w-4xl">
+    {% if error %}
+        <div class="p-4 bg-red-100 text-red-700 rounded mb-2">{{ error }}</div>
+    {% endif %}
+
+    {% if not products %}
+        <div class="p-6 text-center text-gray-700">
+            No recommendations found for "{{ query }}".
+        </div>
+    {% else %}
+        <div class="grid grid-cols-1 gap-4">
+            {% for product in products %}
+                {% include "recommendations/partial_product_card.html" %}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

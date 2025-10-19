@@ -1,0 +1,23 @@
+{% extends 'core/index.html' %}
+
+{% block body %}
+    <main class="min-h-screen bg-gradient-to-r from-green-200 to-teal-100 py-4">
+        <div class="p-2 max-w-4xl mx-auto bg-green-50 rounded-xl">
+            <h1 class="text-center text-2xl font-bold mb-4">Get Product Recommendations</h1>
+            <form hx-post="{% url 'recommendations:recommend_products' %}" hx-target="#products_list"
+                  hx-swap="outerHTML"
+                  class="flex gap-2" hx-indicator="#indicator">
+                {#                <label for="user-prompt">Input Query:</label>#}
+                <input type="text" name="user-prompt" id="user-prompt" class="bg-white flex-1 p-2 border rounded"
+                       placeholder="Input query.."/>
+                <button class="px-4 py-2 mx-2 rounded bg-teal-500 text-white" hx-target="#indicator">Search</button>
+            </form>
+        </div>
+
+        <div id="products_list" class="my-1 p-2 mx-auto bg-green-50 rounded-xl max-w-4xl">
+            <div id="indicator" class="htmx-indicator">
+                <p class="mt-2 text-gray-600">Loading...</p>
+            </div>
+        </div>
+    </main>
+{% endblock body %}

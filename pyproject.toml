@@ -1,0 +1,14 @@
+[project]
+name = "product-reccomender-web-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=5.2.7",
+    "django-htmx>=1.26.0",
+    "dotenv>=0.9.9",
+    "google-genai>=1.45.0",
+    "pandas>=2.3.3",
+    "pinecone>=7.3.0",
+]
