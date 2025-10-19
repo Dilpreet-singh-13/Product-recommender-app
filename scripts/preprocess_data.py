@@ -59,7 +59,6 @@ def main():
     print("Cleaning and normalizing columns...")
 
     # Fill nulls and normalize text columns
-    # Only these columns have null values as seen in the notebook inside notebooks/
     text_cols = [
         "title", "brand", "description", "manufacturer",
         "package_dimensions", "country_of_origin", "material", "color"
@@ -67,11 +66,11 @@ def main():
     for col in text_cols:
         if col in df.columns:
             df[col] = df[col].fillna("").astype(str).str.strip()
-
+    # Non text columns
     df["price"] = df["price"].apply(parse_price)
     df["categories"] = df["categories"].apply(parse_list_column)
     df["images"] = df["images"].apply(parse_list_column)
-
+    # To be used to generate embeddings
     df["combined_text"] = df.apply(combine_text, axis=1)
 
     # save to CSV

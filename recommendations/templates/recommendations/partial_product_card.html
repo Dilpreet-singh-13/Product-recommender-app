@@ -9,24 +9,19 @@
         {% endwith %}
     </div>
 
+
     <div class="flex-1">
         <div class="flex items-start justify-between">
             <div class="space-y-1">
                 <h3 class="text-sm md:text-lg font-semibold text-gray-800">{{ product.title }}</h3>
                 {% if product.brand %}
-                    <div class="text-xs text-gray-600">Brand: {{ product.brand }}</div>
+                    <div class="text-gray-600">Brand: {{ product.brand }}</div>
                 {% endif %}
                 {% if product.price %}
-                    <div class="text-sm font-bold text-green-700">${{ product.price }}</div>
+                    <div class="font-bold text-green-700">${{ product.price }}</div>
                 {% endif %}
             </div>
         </div>
-
-        {% if product.categories %}
-            <div class="mt-2 text-xs text-gray-600">
-                Categories: {{ product.categories|join:", " }}
-            </div>
-        {% endif %}
 
         <div class="mt-3 text-sm text-gray-700">
             {% if product.generated_description %}
@@ -43,12 +38,18 @@
                 </button>
 
                 <div id="indicator-{{ product.unique_id }}" class="htmx-indicator">
-                    <p class="mt-2 text-gray-600">Loading...</p>
+                    <p class="text-gray-600">Loading...</p>
                 </div>
             {% endif %}
         </div>
 
-        <div class="mt-3 text-xs text-gray-500">
+        {% if product.categories %}
+            <div class="mt-2 text-gray-600">
+                Categories: {{ product.categories|join:", " }}
+            </div>
+        {% endif %}
+
+        <div class="mt-3 text-sm text-gray-500">
             {% if product.material %}Material: {{ product.material }}{% endif %}
             {% if product.manufacturer %} • Manufacturer: {{ product.manufacturer }}{% endif %}
         </div>

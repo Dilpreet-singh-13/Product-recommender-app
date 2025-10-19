@@ -13,7 +13,11 @@
 </head>
 <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
 {% block body %}
-
+    <div class="min-h-screen w-full bg-green-100 text-center p-4 gap-4">
+        <p class="text-xl m-4 p-4">Please visit the recommendations page to try the app.</p>
+        <a href="{% url 'recommendations:recommend_page_view' %}" class="p-4 text-lg text-orange-500">Click here to go
+            recommendations page</a>
+    </div>
 {% endblock body %}
 </body>
 </html>

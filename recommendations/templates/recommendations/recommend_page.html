@@ -2,11 +2,13 @@
 
 {% block body %}
     <main class="min-h-screen bg-gradient-to-r from-green-200 to-teal-100 py-4">
-        <div class="p-2 max-w-4xl mx-auto bg-green-50 rounded-xl">
-            <h1 class="text-center text-2xl font-bold mb-4">Get Product Recommendations</h1>
+        <div class=" m-2 p-2 max-w-4xl mx-auto bg-green-50 rounded-xl text-center ">
+            <h1 class="text-2xl font-bold mb-4">Get Product Recommendations</h1>
+            <h2 class="m-2">The dataset only has furniture products data, so please input a relevant query to get the
+                most accurate results.</h2>
             <form hx-post="{% url 'recommendations:recommend_products' %}" hx-target="#products_list"
                   hx-swap="outerHTML"
-                  class="flex gap-2" hx-indicator="#indicator">
+                  class="flex gap-2 m-2" hx-indicator="#indicator">
                 {#                <label for="user-prompt">Input Query:</label>#}
                 <input type="text" name="user-prompt" id="user-prompt" class="bg-white flex-1 p-2 border rounded"
                        placeholder="Input query.."/>
@@ -14,7 +16,8 @@
             </form>
         </div>
 
-        <div id="products_list" class="my-1 p-2 mx-auto bg-green-50 rounded-xl max-w-4xl">
+        <div id="products_list" class="my-2 p-2 mx-auto bg-green-50 rounded-xl max-w-4xl text-center">
+            Related Products will appear here
             <div id="indicator" class="htmx-indicator">
                 <p class="mt-2 text-gray-600">Loading...</p>
             </div>
